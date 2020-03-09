@@ -5,33 +5,34 @@ block pageHeader
     li
       a(href="/tickets") Tickets
     li.active
-      Detais
+      Details
 
   .page-header
     h1=ticket.title
+      =" "
       small #
         =ticket.id
 
 block content
   .row
 
-    .col-md-1.input-lg.text-muted  owner:
+    .col-md-1.input-lg.text-muted  Owner:
     .col-md-3.input-lg=ticket.owner_id
 
-    .col-md-1.input-lg.text-muted  category:
+    .col-md-1.input-lg.text-muted  Category:
     .col-md-3.input-lg=ticket.category
 
-    .col-md-1.input-lg.text-muted  status:
+    .col-md-1.input-lg.text-muted  Status:
     .col-md-3.input-lg
-      !=helper.genLabelByStatus(ticket.status)
+      !=helper.genLabelByStatus(ticket.status.toUpperCase())
 
-    .col-md-1.input-lg.text-muted  updated:
+    .col-md-1.input-lg.text-muted  Updated:
     .col-md-3.input-lg
       !=helper.genDateTag(ticket.updated_at)
-    .col-md-1.input-lg.text-muted  created:
+    .col-md-1.input-lg.text-muted  Created:
     .col-md-3.input-lg
       !=helper.genDateTag(ticket.created_at)
-    .col-md-1.input-lg.text-muted  attempts:
+    .col-md-1.input-lg.text-muted  Attempts:
     .col-md-3.input-lg=ticket.attempts
 
 
@@ -42,12 +43,12 @@ block content
 
 
     .col-md-1.text-right
-      if ticket.status == "processing"
+      if ticket.status == "Processing"
         form.abandon(action="/tickets/#{ticket.id}/giveup", method="POST")
           input(type="hidden", name="name", value="admin")
-          input(type="hidden", name="reason", value="admin give up this ticket on web interface")
+          input(type="hidden", name="reason", value="The user gave up on this ticket.")
           button.btn.btn-warning(type='submit')
-            i.fa.fa-trash-o
+            i.fa.fa-child-o
             !=" Give Up"
       else
         button.btn.btn-warning(disabled="true")
@@ -56,7 +57,7 @@ block content
 
     .col-md-1.text-right
 
-      if ticket.status == "pending"
+      if ticket.status == "Pending"
         button.btn.btn-danger(data-toggle="modal", data-target="#myModal2")
           i.fa.fa-trash-o
           !=" Abandon"
@@ -106,7 +107,7 @@ block content
 
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='submit') Save changes
+            button.btn.btn-primary(type='submit') Save Changes
 
 
   #myModal2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel2', aria-hidden='true')

@@ -49,7 +49,7 @@ block content
         a.list-group-item(href="/tickets/#{ticket.id}")
           .row
             .col-md-1
-              !=helper.genLabelByStatus(ticket.status)
+              !=helper.genLabelByStatus(ticket.status.toUpperCase())
             .col-md-2
               small
                 code=ticket.id
@@ -69,10 +69,10 @@ block content
   script(type='text/javascript').
     if(jQuery){
       var TICKET_STATUS_TO_INFO_TYPE = {
-        pending: 'default',
-        processing: 'primary',
-        completed: 'success',
-        abandoned: 'danger'
+        PENDING: 'default',
+        PROCESSING: 'primary',
+        COMPLETED: 'success',
+        ABANDONED: 'danger'
       };
 
       var genDateTag = function(date) {
@@ -83,7 +83,7 @@ block content
       };
 
       var genLabelByStatus = function(status) {
-        return "<span class='label label-" + (TICKET_STATUS_TO_INFO_TYPE[status] || 'default') + "'>" + status + "</span>";
+        return "<span class='label label-" + (TICKET_STATUS_TO_INFO_TYPE[status] || 'default') + "'>" + status.toUpperCase() + "</span>";
       }
 
       var mscroller = $(window).mongooseEndlessScroll({
@@ -142,15 +142,23 @@ block content
 
             .form-group
               .controls
-                input.input-lg.form-control#name(type='text', name="name", placeholder='Ticket Name')
+                input.input-lg.form-control#title(type='text', name="title", placeholder='Ticket Title')
 
             .form-group
               .controls
-                input.input-lg.form-control#desc(type='text', name="desc", placeholder='Description')
+                input.input-lg.form-control#owner_id(type='text', name="owner_id", placeholder='Owner ID')
+
+            .form-group
+              .controls
+                input.input-lg.form-control#category(type='text', name="category", placeholder='Category')
+
+            .form-group
+              .controls
+                input.input-lg.form-control#content(type='text', name="content", placeholder='Description')
 
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='submit') Save changes
+            button.btn.btn-primary(type='submit') Save
 
 
 

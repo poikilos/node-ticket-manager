@@ -1,10 +1,10 @@
 _ = require "underscore"
 
 TICKET_STATUS_TO_INFO_TYPE =
-  pending : 'default'
-  processing : 'primary'
-  completed : 'success'
-  abandoned : 'danger'
+  PENDING : 'default'
+  PROCESSING : 'primary'
+  COMPLETED : 'success'
+  ABANDONED : 'danger'
 
 helpers =
 

@@ -28,7 +28,7 @@ class TicketManager
       url: "#{@host}#{PATH}"
       auth : @basicAuth
       json :
-        title : title
+        title : title 
         owner_id : @name
         category : category
         content : content

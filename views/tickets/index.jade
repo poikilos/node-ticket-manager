@@ -2,7 +2,14 @@ extends ../layouts/default
 
 block pageHeader
   .page-header
-    h1 Tickets
+    .row
+      .col-md-7
+        h1 Tickets
+      .col-md-5.text-right
+        button.btn.btn-success(data-toggle="modal", data-target="#myModal")
+          i.fa.fa-plus
+          !=" New Ticket"
+
   ul.nav.nav-tabs
     li.active
       a#list-all(data-toggle="tab") All &nbsp;
@@ -11,7 +18,7 @@ block pageHeader
       a#list-pending(data-toggle="tab") Pending &nbsp;
         #count-pending.badge ?
     li
-      a#list-processing(data-toggle="tab") In Processing &nbsp;
+      a#list-processing(data-toggle="tab") Processing &nbsp;
         #count-processing.badge ?
     li
       a#list-completed(data-toggle="tab") Completed &nbsp;
@@ -24,18 +31,18 @@ block content
   .panel.panel-default
     .panel-heading
       .row
-        .col-md-1 status
-        .col-md-2 id
-        .col-md-5 title
-        .col-md-1 category
-        .col-md-1.text-right created
-        .col-md-1.text-right updated
+        .col-md-1 Status
+        .col-md-2 ID
+        .col-md-5 Title
+        .col-md-1 Category
+        .col-md-1.text-right Created
+        .col-md-1.text-right Updated
         .col-md-1 Attempts
 
 
     //.list-group
       //a#loading-prev.list-group-item.text-center
-        //i.fa.fa-chevron-up=" More Newer Tickets"
+        //i.fa.fa-chevron-up=" Newer Tickets"
 
     #list.list-group
       each ticket in tickets
@@ -56,7 +63,7 @@ block content
 
     .list-group
       a#loading-next.list-group-item.text-center
-        i.fa.fa-chevron-down=" More Older Tickets"
+        i.fa.fa-chevron-down="Older Tickets"
 
   script(src='/js/endless_scroll/jquery.scroll-on-mongoose.js?#{VERSION}', type='text/javascript')
   script(type='text/javascript').
@@ -86,8 +93,8 @@ block content
         intervalFrequency: 200,
         //elControlUp : $("#loading-prev"),
         elControlDown : $("#loading-next"),
-        htmlEnableScrollUp : "<i class='fa fa-chevron-up'></i> More Newerer Tickets",
-        htmlEnableScrollDown :  "<i class='fa fa-chevron-down'></i> More Older Tickets",
+        htmlEnableScrollUp : "<i class='fa fa-chevron-up'></i> Newer Tickets",
+        htmlEnableScrollDown :  "<i class='fa fa-chevron-down'></i> Older Tickets",
         htmlLoading : "<i class='fa fa-spinner fa-spin'></i> Loading...",
         onChange : function(){
           if($(".timeago").length > 0) $(".timeago").prettyDate({"interval":false});
@@ -123,6 +130,27 @@ block content
       })
 
     }
+    
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    form.login(action="/api/tickets/new", method="post")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            h4#myModalLabel.modal-title Create A New Ticket
+          .modal-body
+
+            .form-group
+              .controls
+                input.input-lg.form-control#name(type='text', name="name", placeholder='Ticket Name')
+
+            .form-group
+              .controls
+                input.input-lg.form-control#desc(type='text', name="desc", placeholder='Description')
+
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='submit') Save changes
 
 
 

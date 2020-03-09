@@ -2,6 +2,7 @@
 path = require('path')
 
 module.exports =
+
   development:
     db: 'mongodb://localhost/ticketman_dev'
     app:

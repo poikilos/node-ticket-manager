@@ -19,10 +19,10 @@ tracker. Tatsuoline on GitHub made a fork that fixes the New Ticket
 option and some grammatical errors, so I forked from that.
 
 This system consists of following 3 parts:
-- Ticketman website - a ExpressJS app display the current status of the
+- Node Ticket Manager website - a ExpressJS app display the current status of the
   central ticket system
 - TicketManager - a JS Class for `create(TicketManager.issue)` new ticket
-- TicketWorker - a JS Class pulls ticket from Ticketman website on a
+- TicketWorker - a JS Class pulls ticket from Node Ticket Manager website on a
   routine, it can also complete/giveup/add comment to a ticket. The
   TicketWorker instance works on one ticket at time.
 
@@ -31,7 +31,7 @@ This system consists of following 3 parts:
 
 ### Job (Tickets) List
 
-![node-ticket-manager screenshot 01](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot01.png "Ticketman screenshot 01")
+![node-ticket-manager screenshot 01](public/img/node-ticket-manager_screenshot01.png "node-ticket-manager screenshot 01")
 
 ### Ticket detail
 

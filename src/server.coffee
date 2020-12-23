@@ -73,7 +73,7 @@ require('./config/routes')(app)
 # Start the app by listening on <port>
 port = p.port || process.env.PORT || 3456
 app.listen(port)
-debuglog "Ticketman app started on port #{port}"
+debuglog "Node Ticket Manager app started on port #{port}"
 
 # expose app
 exports = module.exports = app

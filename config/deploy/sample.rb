@@ -4,7 +4,7 @@ set :host, "127.0.0.1"
 
 set :mode, "development"
 
-set :deploy_to, '/var/www/apps/ticketman'
+set :deploy_to, '/var/www/apps/node-ticket-manager'
 
 set :path_to_log, "#{current_path}/log/#{application}.log"
 set :path_to_pid, "#{current_path}/#{application}.pid"

@@ -6,7 +6,7 @@ oauth = require "./utils/oauth"
 env = process.env.NODE_ENV || 'development'
 DEFAULT_BASIC_AUTH = require('./config/config')[env]['basicAuth']
 
-debuglog = require("debug")("ticketman:TicketWorker#")
+debuglog = require("debug")("node-ticket-manager:TicketWorker#")
 
 {EventEmitter} = require('events')
 request = require "request"

@@ -5,7 +5,7 @@
 ## Module dependencies
 should = require "should"
 _ = require "underscore"
-debuglog = require("debug")("ticketman:test:ticket_test")
+debuglog = require("debug")("node-ticket-manager:test:ticket_test")
 
 STATUS = require "../enums/ticket_status"
 

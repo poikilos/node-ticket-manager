@@ -12,7 +12,7 @@ fs = require('fs')
 p = require "commander"
 path = require "path"
 _ = require "underscore"
-debuglog = require("debug")("ticketman:server")
+debuglog = require("debug")("node-ticket-manager:server")
 
 pkg = JSON.parse(fs.readFileSync(path.join(__dirname, "../package.json")))
 

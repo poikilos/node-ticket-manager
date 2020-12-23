@@ -7,7 +7,7 @@ Worker = mongoose.model('Worker')
 
 exports.authWorker = (req, res, next)->
 
-  signature = req.headers['ticketman-authenticate']
+  signature = req.headers['node-ticket-manager-authenticate']
   return next(new Error "signature checking failed") unless signature? and signature.indexOf("Ticketman") is 0
 
   workerId = (signature.match(/Ticketman ([^:]+)/) || EMPTY_ARRAY)[1]
@@ -27,7 +27,7 @@ exports.authWorker = (req, res, next)->
   return
 
 exports.updateWorkerAt = (req, res, next) ->
-  signature = req.headers['ticketman-authenticate']
+  signature = req.headers['node-ticket-manager-authenticate']
   workerId = (signature.match(/Ticketman ([^:]+)/) || EMPTY_ARRAY)[1]
 
   Worker.findByIdAndUpdate workerId, {updated_at: Date.now()}, (err, worker) ->

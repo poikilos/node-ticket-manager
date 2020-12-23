@@ -9,7 +9,7 @@ request = require "request"
 
 {TicketWorker} = require "../"
 
-debuglog = require("debug")("ticketman:test:ticket_worker_test")
+debuglog = require("debug")("node-ticket-manager:test:ticket_worker_test")
 assert = require "assert"
 
 config = require("../config/config")['development']

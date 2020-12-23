@@ -1,5 +1,5 @@
 {
-  "name": "ticketman",
+  "name": "node-ticket-manager",
   "description": "A simple pull-based job/ticket system contians a centeral ticket dispatcher and distributed workers. This system is written in NodeJS, runing on MongoDB",
   "version": "0.2.8",
   "homepage": "https://github.com/yi/node-ticket-manager",
@@ -8,12 +8,23 @@
     "email": "yi2004@gmail.com",
     "url": "https://github.com/yi/"
   },
+  "contributors" : [
+    {
+      "name": "Tatsuoline",
+      "url": "https://github.com/Tatsuonline"
+    },
+    {
+      "name": "Poikilos",
+      "email": "7557867+poikilos@users.noreply.github.com",
+      "url": "https://github.com/poikilos"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/yi/node-ticket-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/yi/node-ticket-manager/issues"
+    "url": "https://github.com/poikilos/node-ticket-manager/issues"
   },
   "licenses": [
     {
@@ -27,9 +38,9 @@
   },
   "scripts": {
     "watch": "coffee -o ./lib/ -cw ./src/",
-    "start": "DEBUG=ticketman* ./node_modules/.bin/nodemon lib/server.js",
-    "build": "distill -i ./src/server.coffee -o ./dist/ticketman-www.js",
-    "test": "DEBUG=ticketman* ./node_modules/.bin/mocha tests"
+    "start": "DEBUG=node-ticket-manager* ./node_modules/.bin/nodemon lib/server.js",
+    "build": "distill -i ./src/server.coffee -o ./dist/node-ticket-manager-www.js",
+    "test": "DEBUG=node-ticket-manager* ./node_modules/.bin/mocha tests"
   },
   "dependencies": {
     "async": "0.2.10",

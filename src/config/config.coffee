@@ -4,7 +4,7 @@ path = require('path')
 module.exports =
 
   development:
-    db: 'mongodb://localhost/ticketman_dev'
+    db: 'mongodb://localhost/node-ticket-manager_dev'
     app:
       name: 'Ticket System - Dev'
     basicAuth:
@@ -12,7 +12,7 @@ module.exports =
       password : "123"
 
   test:
-    db: 'mongodb://localhost/ticketman_test'
+    db: 'mongodb://localhost/node-ticket-manager_test'
     app:
       name: 'Ticket System - Test'
     basicAuth:
@@ -20,7 +20,7 @@ module.exports =
       password : "123"
 
   production:
-    db: 'mongodb://localhost/ticketman'
+    db: 'mongodb://localhost/node-ticket-manager'
     app:
       name: 'Ticket System'
     basicAuth:

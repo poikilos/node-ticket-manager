@@ -8,7 +8,7 @@ MAX_ATTEMPTS_BEFORE_ABANDON = 16
 
 MAX_TIME_ALLOWED_FOR_PROCESSING = 1000 * 60 * 60
 
-debuglog = require("debug")("ticketman:controller:ticket")
+debuglog = require("debug")("node-ticket-manager:controller:ticket")
 
 # list tickets
 # GET /

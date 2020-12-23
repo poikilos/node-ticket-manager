@@ -28,7 +28,7 @@ exports.create = (req, res, next)->
   return
 
 exports.updateAt = (req, res, next) ->
-  signature = req.headers['ticketman-authenticate']
+  signature = req.headers['node-ticket-manager-authenticate']
   return next(new Error "signature checking failed") unless signature? and signature.indexOf("Ticketman") is 0
 
   workerId = (signature.match(/Ticketman ([^:]+)/) || EMPTY_ARRAY)[1]

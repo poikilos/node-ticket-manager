@@ -1,11 +1,13 @@
-# ticket-system
+# Node Ticket Manager
 A simple pull-based job/ticket system contains a central ticket
 dispatcher and distributed workers. This system is written in NodeJS,
 running on MongoDB.
 
+
 ## Differences in Poikilos' fork
 - Switch from npm to yarn.
 - Fix spelling errors.
+- Clarify naming.
 
 
 ## Reason for fork
@@ -29,20 +31,20 @@ This system consists of following 3 parts:
 
 ### Job (Tickets) List
 
-![Ticketman screenshot 01](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot01.png "Ticketman screenshot 01")
+![node-ticket-manager screenshot 01](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot01.png "Ticketman screenshot 01")
 
 ### Ticket detail
 
-![Ticketman screenshot 02](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot02.png "Ticketman screenshot 02")
+![node-ticket-manager screenshot 02](public/img/node-ticket-manager_screenshot02.png "node-ticket-manager screenshot 02")
 
 
 ### Client-worker add comments to ticket
 
-![Ticketman screenshot 03](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot03.png "Ticketman screenshot 03")
+![node-ticket-manager screenshot 03](public/img/node-ticket-manager_screenshot03.png "node-ticket-manager screenshot 03")
 
 ### Manage multiple client-workers
 
-![Ticketman screenshot 04](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot04.png "Ticketman screenshot 04")
+![node-ticket-manager screenshot 04](public/img/node-ticket-manager_screenshot04.png "node-ticket-manager screenshot 04")
 
 
 ## Usage
@@ -54,14 +56,14 @@ This system consists of following 3 parts:
 
 ### Development
 2. The default environment is "dev". In that mode, only the "dev" user
-   and the ticketman_dev database are available. However, a web
-   interface is available that doesn't require the client.
+   and the node-ticket-manager_dev database are available. However, a
+   web interface is available that doesn't require the client.
    - run `yarn start` to start the service
 3. Open <http://localhost:3456> in your web browser
 
 #### Production
-To enable the production database, "ticketman", and the production user
-defined in your config.js, run using:
+To enable the production database named "node-ticket-manager" and the
+production user defined in your config.js, run using:
 ```
 export NODE_ENV=production
 yarn start
@@ -73,8 +75,8 @@ Then you will need to proceed to the readme file at
 
 ## NodeJS Module Usage
 ```javascript
-var  TicketWorker = require("ticketman").TicketWorker;
-var  TicketManager = require("ticketman").TicketManager;
+var  TicketWorker = require("node-ticket-manager").TicketWorker;
+var  TicketManager = require("node-ticket-manager").TicketManager;
 ```
 
 ## TicketManager API

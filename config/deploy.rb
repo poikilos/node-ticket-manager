@@ -4,7 +4,7 @@ require 'capistrano/ext/multistage'
 set :stages,          %w(local sample stage166 r3 gama rmd)
 set :default_stage,   "stage166"
 
-set :application, "ticketman"
+set :application, "node-ticket-manager"
 
 # 编译以后的代码所在的路径，就是要 deploy 的版本
 set :repository,  "./build"
@@ -35,9 +35,9 @@ set :default_run_options, :pty => true
 
 set :normalize_asset_timestamps, false
 #
-#set :deploy_to, '/var/app/ticketman/'
-#set :deploy_to, '/var/www/apps/ticketman/'
-#set :deploy_to, '/var/www/apps/ticketman_rmd/'
+#set :deploy_to, '/var/app/node-ticket-manager/'
+#set :deploy_to, '/var/www/apps/node-ticket-manager/'
+#set :deploy_to, '/var/www/apps/node-ticket-manager_rmd/'
 
 #set :path_to_log, "#{current_path}/log/#{application}.log"
 #set :path_to_pid, "#{current_path}/#{application}.pid"
@@ -55,7 +55,7 @@ namespace :deploy do
 
   desc "start #{application}"
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "touch #{path_to_log} && DEBUG=ticketman* forever start -a -l #{path_to_log} --pidFile #{path_to_pid} #{path_to_main_script} -e #{mode}"
+    run "touch #{path_to_log} && DEBUG=node-ticket-manager* forever start -a -l #{path_to_log} --pidFile #{path_to_pid} #{path_to_main_script} -e #{mode}"
   end
 
   desc "stop #{application}"

@@ -7,7 +7,7 @@ should = require "should"
 
 {TicketWorker} = require "../"
 
-debuglog = require("debug")("ticketman:test:ticket_worker_test")
+debuglog = require("debug")("node-ticket-manager:test:ticket_worker_test")
 
 config = require("../config/config")['development']
 

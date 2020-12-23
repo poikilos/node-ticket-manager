@@ -9,3 +9,4 @@ log/
 *.swo
 public_src/js/endless_scroll
 tags
+/lib/config/config.js

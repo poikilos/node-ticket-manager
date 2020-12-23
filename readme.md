@@ -1,24 +1,29 @@
 # ticket-system
+A simple pull-based job/ticket system contains a central ticket
+dispatcher and distributed workers. This system is written in NodeJS,
+running on MongoDB.
 
-[![Build Status](https://travis-ci.org/yi/node-ticket-manager.png?branch=master)](https://travis-ci.org/yi/node-ticket-manager)
-[![Dependencies Status](https://david-dm.org/yi/node-ticket-manager.png)](https://david-dm.org/yi/node-ticket-manager)
+## Differences in Poikilos' fork
+- Switch from npm to yarn.
+- Fix spelling errors.
 
 
-A simple pull-based job/ticket system contians a centeral ticket dispatcher and distributed workers. This system is written in NodeJS, runing on MongoDB
+## Reason for fork
+"ticketman" on npmjs.org a.k.a. "ticket-system" a.k.a.
+node-ticket-manager on GitHub is no longer maintained by the original
+author, Yi on GitHub (The last publish to npm is 2016, and the last
+commit is 2018). There are trivial but unresolved issues in the issue
+tracker. Tatsuoline on GitHub made a fork that fixes the New Ticket
+option and some grammatical errors, so I forked from that.
 
 This system consists of following 3 parts:
+- Ticketman website - a ExpressJS app display the current status of the
+  central ticket system
+- TicketManager - a JS Class for `create(TicketManager.issue)` new ticket
+- TicketWorker - a JS Class pulls ticket from Ticketman website on a
+  routine, it can also complete/giveup/add comment to a ticket. The
+  TicketWorker instance works on one ticket at time.
 
- * Ticketman website - a ExpressJS app display the current status of the centeral ticket system
- * TicketManager - a JS Class for create(TicketManager.issue) new ticket
- * TicketWorker - a JS Class pulls ticket from Ticketman website on a routine, it can also complete/giveup/add comment to a ticket. The TicketWorker instance works on one ticket at time.
-
-
-## Install as NodeJS module:
-Install the module with:
-
-```bash
-npm install ticketman
-```
 
 ## Screenshots
 
@@ -40,12 +45,30 @@ npm install ticketman
 ![Ticketman screenshot 04](https://raw.githubusercontent.com/yi/node-ticket-manager/master/public/img/ticketman_screenshot04.png "Ticketman screenshot 04")
 
 
-## Use the Ticketman website
+## Usage
+1. Run `yarn install` to install dependencies.
+2. Configure the server by creating ./config/config.js. An example
+   configuration is available at ./config/config.js, but for security,
+   don't use it directly--instead, make a similar file with good-quality
+   passwords.
 
- 1. Download and extract the latest release from https://github.com/yi/node-ticket-manager/releases
- 2. run "npm install" to install dependencies
- 3. run "npm start" to start the service
- 4. Open http://localhost:3456 in your web browser
+### Development
+2. The default environment is "dev". In that mode, only the "dev" user
+   and the ticketman_dev database are available. However, a web
+   interface is available that doesn't require the client.
+   - run `yarn start` to start the service
+3. Open <http://localhost:3456> in your web browser
+
+#### Production
+To enable the production database, "ticketman", and the production user
+defined in your config.js, run using:
+```
+export NODE_ENV=production
+yarn start
+```
+
+Then you will need to proceed to the readme file at
+<https://github.com/poikilos/node-ticket-manager-client>.
 
 
 ## NodeJS Module Usage
@@ -80,7 +103,7 @@ TicketManager.issue()
   #
 ```
 
-### Evnets:
+### Events:
 
  * on "new ticket", listener signature: eventListener(ticket)
  * on "complete", listener signature: eventListener(ticket)
@@ -146,6 +169,6 @@ req.body:
   name : "worker"
 }
 ```
-## License
-Copyright (c) 2014 yi
-Licensed under the MIT license.
+## Authors & License
+- Copyright (c) 2014 yi, 2020 Poikilos
+- License: See the license file.
